@@ -8,3 +8,9 @@ module.exports.main = (event) => {
     now: new Date().toISOString()
   }
 }
+
+// Call handler-function if code runs locally.
+// $ node echo.js test abc
+if (require.main === module) {
+    console.log(module.exports.main.call(this, process.argv.slice(2)))
+}
