@@ -10,7 +10,13 @@ module.exports.main = (event) => {
 }
 
 // Call handler-function if code runs locally.
-// $ node echo.js test abc
+// $ node echo.js param="param pam pam" a=1
 if (require.main === module) {
-    console.log(module.exports.main.call(this, process.argv.slice(2)))
+  args = {}
+  let cleared_argv = process.argv.slice(2);
+  for (let i=0; i < cleared_argv.length; i++) {
+    let param = cleared_argv[i].split('=');
+    args[param[0]] = param[1];
+  }
+  console.log(module.exports.main.call(this, args))
 }
