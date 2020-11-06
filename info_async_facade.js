@@ -61,8 +61,7 @@ module.exports.main = async ({lat, lon}) => {
 // Call handler-function if code runs locally.
 if (require.main === module) {
   module.exports.main({ lat: 59.89, lon: 30.33 })
-    .then((d) => {
-      console.log(JSON.stringify(d));
-    })
+    .then(JSON.stringify)
+    .then(console.log)
     .catch(console.error);
 }
