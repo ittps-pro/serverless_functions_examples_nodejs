@@ -1,4 +1,3 @@
-
 module.exports.main = (event) => {
   /**
    * Это вызываемая функция.
